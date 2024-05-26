@@ -8,10 +8,21 @@ jest.mock('@/components/ui/tabs', () => ({
   ),
 }));
 
-jest.mock('./components/Bookings/Bookings', () => () => <div>Bookings</div>);
-jest.mock('./components/Parcs/Parcs', () => () => <div>Parcs</div>);
-jest.mock('./components/Users/Users', () => () => <div>Users</div>);
-jest.mock('./components/Tabs/HeaderTabs', () => () => <div>HeaderTabs</div>);
+const MockBookings = () => <div>Bookings</div>;
+MockBookings.displayName = 'MockBookings';
+jest.mock('./components/Bookings/Bookings', () => MockBookings);
+
+const MockParcs = () => <div>Parcs</div>;
+MockParcs.displayName = 'MockParcs';
+jest.mock('./components/Parcs/Parcs', () => MockParcs);
+
+const MockUsers = () => <div>Users</div>;
+MockUsers.displayName = 'MockUsers';
+jest.mock('./components/Users/Users', () => MockUsers);
+
+const MockHeaderTabs = () => <div>HeaderTabs</div>;
+MockHeaderTabs.displayName = 'MockHeaderTabs';
+jest.mock('./components/Tabs/HeaderTabs', () => MockHeaderTabs);
 
 describe('Home', () => {
   it('renders correctly', () => {

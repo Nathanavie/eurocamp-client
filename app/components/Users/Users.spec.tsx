@@ -20,11 +20,15 @@ jest.mock('@/components/ui/tabs', () => ({
   ),
 }));
 
-jest.mock('./Rows/Rows', () => () => (
+const MockRows = () => (
   <tr>
     <td>Mocked Row</td>
   </tr>
-));
+);
+MockRows.displayName = 'MockRows';
+
+jest.mock('./Rows/Rows', () => MockRows);
+
 jest.mock('./helpers', () => ({
   getData: async () => ({
     data: [{ name: 'John Doe', email: 'johnDoe@example.com' }],
