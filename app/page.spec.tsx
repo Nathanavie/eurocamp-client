@@ -7,22 +7,29 @@ jest.mock('@/components/ui/tabs', () => ({
     <div>{children}</div>
   ),
 }));
+jest.mock('./components/Bookings/Bookings', () => {
+  const MockBookings = () => <div>Bookings</div>;
+  MockBookings.displayName = 'MockBookings';
+  return MockBookings;
+});
 
-const MockBookings = () => <div>Bookings</div>;
-MockBookings.displayName = 'MockBookings';
-jest.mock('./components/Bookings/Bookings', () => MockBookings);
+jest.mock('./components/Parcs/Parcs', () => {
+  const MockParcs = () => <div>Parcs</div>;
+  MockParcs.displayName = 'MockParcs';
+  return MockParcs;
+});
 
-const MockParcs = () => <div>Parcs</div>;
-MockParcs.displayName = 'MockParcs';
-jest.mock('./components/Parcs/Parcs', () => MockParcs);
+jest.mock('./components/Users/Users', () => {
+  const MockUsers = () => <div>Users</div>;
+  MockUsers.displayName = 'MockUsers';
+  return MockUsers;
+});
 
-const MockUsers = () => <div>Users</div>;
-MockUsers.displayName = 'MockUsers';
-jest.mock('./components/Users/Users', () => MockUsers);
-
-const MockHeaderTabs = () => <div>HeaderTabs</div>;
-MockHeaderTabs.displayName = 'MockHeaderTabs';
-jest.mock('./components/Tabs/HeaderTabs', () => MockHeaderTabs);
+jest.mock('./components/Tabs/HeaderTabs', () => {
+  const MockHeaderTabs = () => <div>HeaderTabs</div>;
+  MockHeaderTabs.displayName = 'MockHeaderTabs';
+  return MockHeaderTabs;
+});
 
 describe('Home', () => {
   it('renders correctly', () => {
