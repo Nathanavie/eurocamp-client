@@ -3,6 +3,8 @@ import Bookings from './components/Bookings/Bookings';
 import Parcs from './components/Parcs/Parcs';
 import HeaderTabs from './components/Tabs/HeaderTabs';
 import Users from './components/Users/Users';
+import { Suspense } from 'react';
+import Loading from './components/Loading/Loading';
 interface HomeProps {
   searchParams: {
     section: string | undefined;
@@ -19,13 +21,19 @@ const Home = ({ searchParams }: HomeProps) => {
         >
           <HeaderTabs />
           <TabsContent value='users'>
-            <Users />
+            <Suspense fallback={<Loading />}>
+              <Users />
+            </Suspense>
           </TabsContent>
           <TabsContent value='parcs'>
-            <Parcs />
+            <Suspense fallback={<Loading />}>
+              <Parcs />
+            </Suspense>
           </TabsContent>
           <TabsContent value='bookings'>
-            <Bookings />
+            <Suspense fallback={<Loading />}>
+              <Bookings />
+            </Suspense>
           </TabsContent>
         </Tabs>
       </div>
